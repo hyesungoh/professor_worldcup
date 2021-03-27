@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import { MenuItem, Select } from "@material-ui/core";
+import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 
 function HomePresenter() {
     const majors = [
@@ -12,28 +12,36 @@ function HomePresenter() {
         "미디어컨텐츠융합자율학부",
     ];
 
-    const [myMajor, setMyMajor] = useState(majors[0]);
+    const [myMajor, setMyMajor] = useState("");
 
-    const onClick = (e) => {
-        setMyMajor(e.target.dataset.value);
+    const onChange = (e) => {
+        setMyMajor(e.target.value);
     };
 
     return (
         <main className="home">
-            <Select value={myMajor}>
-                {majors.map((major, index) => (
-                    <MenuItem key={index} onClick={onClick} value={major}>
-                        {major}
-                    </MenuItem>
-                ))}
-            </Select>
+            <FormControl>
+                <InputLabel id="major-label">전공을 선택해주세요</InputLabel>
+                <Select
+                    labelid="major-label"
+                    className="home__select"
+                    onChange={onChange}
+                    value={myMajor}
+                >
+                    <MenuItem value="">고민 좀 할게요</MenuItem>
+                    {majors.map((major, index) => (
+                        <MenuItem key={index} value={major}>
+                            {major}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
 
-            {/* <Button variant="contained" color="primary">
-                HELLO WORLD
-            </Button>
-
-            <Link to="/select">toSELECT</Link>
-            <Link to="/result">toRESULT</Link> */}
+            <Link to="/select" className="home__btn">
+                <Button variant="contained" color="primary">
+                    HELLO WORLD
+                </Button>
+            </Link>
         </main>
     );
 }
