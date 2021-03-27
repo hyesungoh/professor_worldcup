@@ -7,14 +7,14 @@ import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import background from "static/images/skhu_background.jpeg";
 
 function HomePresenter() {
+    const [myMajor, setMyMajor] = useState("");
+
     const majors = [
         "IT융합자율학부",
         "인문융합자율학부",
         "사회융합자율학부",
         "미디어컨텐츠융합자율학부",
     ];
-
-    const [myMajor, setMyMajor] = useState("");
 
     const onChange = (e) => {
         setMyMajor(e.target.value);

@@ -9,7 +9,7 @@ import SelectPresenter from "pages/Select/SelectPresenter";
 
 const TransitionRouter = withRouter(({ location }) => (
     <TransitionGroup>
-        <CSSTransition key={location.key} timeout={300} classNames="fade">
+        <CSSTransition key={location.key} timeout={1000} classNames="door">
             <Switch location={location}>
                 <Route path="/" exact component={HomePresenter} />
                 <Route path="/select" component={SelectPresenter} />

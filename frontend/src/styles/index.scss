@@ -7,6 +7,45 @@
     font-family: "Noto Sans KR", sans-serif;
 }
 
+.door-enter,
+.door-exit {
+    transition: all 1s ease-in-out;
+
+    .left {
+        // position: absolute;
+        transition: all 1s ease-in-out;
+    }
+
+    .right {
+        // position: absolute;
+        transition: all 1s ease-in-out;
+    }
+}
+
+.door-enter {
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+}
+
+.door-enter.door-enter-active {
+    opacity: 1;
+}
+
+.door-exit {
+    z-index: 0;
+}
+
+.door-exit-active {
+    .left {
+        transform: translateX(-50vw);
+    }
+
+    .right {
+        transform: translateX(50vw);
+    }
+}
+
 main {
     width: 100vw;
     height: 100vh;
@@ -17,7 +56,6 @@ main {
 .left {
     width: 50vw;
     height: 100vh;
-    background-color: red;
 }
 
 .right {
