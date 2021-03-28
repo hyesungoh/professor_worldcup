@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
+import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 
+import { actionCreators } from "store/store";
 import background from "static/images/skhu_background.jpeg";
 
-function HomePresenter({ history }) {
+function HomePresenter({ history, selectMajor }) {
     const [myMajor, setMyMajor] = useState("");
+
+    useEffect(() => {
+        selectMajor("");
+    }, []);
 
     const majors = [
         "IT융합자율학부",
@@ -20,7 +26,7 @@ function HomePresenter({ history }) {
     };
 
     const onSubmit = () => {
-        
+        selectMajor(myMajor);
         history.push("/select");
     };
 
@@ -57,4 +63,14 @@ function HomePresenter({ history }) {
     );
 }
 
-export default HomePresenter;
+const mapStateToProps = (state) => {
+    return { major: state };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        selectMajor: (text) => dispatch(actionCreators.selectMajor(text)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePresenter);

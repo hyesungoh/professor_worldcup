@@ -1,7 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 
-function SelectPresenter() {
-    return <div>im select</div>
+function SelectPresenter({ major }) {
+    return <div>{major}</div>;
 }
 
-export default SelectPresenter;
+function mapStateToProps(state) {
+    return { major: state };
+}
+
+export default connect(mapStateToProps)(SelectPresenter);
