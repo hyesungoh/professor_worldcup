@@ -26,8 +26,12 @@ function HomePresenter({ history, selectMajor }) {
     };
 
     const onSubmit = () => {
-        selectMajor(myMajor);
-        history.push("/select");
+        if (myMajor !== "") {
+            selectMajor(myMajor);
+            history.push("/select");
+        } else {
+            alert("선택해주세용");
+        }
     };
 
     return (

@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-function SelectPresenter({ major }) {
-    return <div>{major}</div>;
+function SelectPresenter({ history, major }) {
+    useEffect(() => {
+        if (major === "") {
+            history.push("/");
+        }
+    }, []);
+
+    return (
+        <main className="select">
+            <div className="left">{major}</div>
+            <div className="right">{major}</div>
+        </main>
+    );
 }
 
 function mapStateToProps(state) {
