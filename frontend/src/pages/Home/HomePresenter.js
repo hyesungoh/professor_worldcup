@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 
 import background from "static/images/skhu_background.jpeg";
 
-function HomePresenter() {
+function HomePresenter({ history }) {
     const [myMajor, setMyMajor] = useState("");
 
     const majors = [
@@ -18,6 +17,11 @@ function HomePresenter() {
 
     const onChange = (e) => {
         setMyMajor(e.target.value);
+    };
+
+    const onSubmit = () => {
+        
+        history.push("/select");
     };
 
     return (
@@ -45,11 +49,9 @@ function HomePresenter() {
                     </Select>
                 </FormControl>
 
-                <Link to="/select" className="home__btn">
-                    <Button variant="contained" color="primary">
-                        우리과 최고의 교수님은?
-                    </Button>
-                </Link>
+                <Button onClick={onSubmit} variant="contained" color="primary">
+                    우리과 최고의 교수님은?
+                </Button>
             </div>
         </main>
     );
