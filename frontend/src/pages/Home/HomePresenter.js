@@ -59,7 +59,7 @@ function HomePresenter({ history, selectMajor }) {
                     </Select>
                 </FormControl>
 
-                <Button onClick={onSubmit} variant="contained" color="primary">
+                <Button className="home__btn" onClick={onSubmit} variant="contained" color="primary">
                     우리과 최고의 교수님은?
                 </Button>
             </div>
