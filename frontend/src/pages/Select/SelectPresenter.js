@@ -9,15 +9,31 @@ function SelectPresenter({ history, major }) {
         if (major === "") {
             history.push("/");
         }
+
+        setTimeout(() => {
+            leftItem.current.classList.add("show");
+            rightItem.current.classList.add("show");
+        }, 500);
     }, []);
 
     const onSelect = (e) => {
-        // ref와 target이랑 비교하기
-        
+        console.log(e.target === leftItem.current);
+        if (e.target === leftItem.current) {
+            leftItem.current.classList.add("select--leftSelected");
+            rightItem.current.classList.add("select--rightNotSelected");
+        } else {
+            leftItem.current.classList.add("select--leftNotSelected");
+            rightItem.current.classList.add("select--rightSelected");
+        }
     };
 
     return (
         <main className="select">
+            <div className="select__info">
+                <h1 className="select__info__title">16강</h1>
+                <p className="select__info__major">{major}</p>
+            </div>
+
             <div className="left">
                 <div
                     ref={leftItem}
