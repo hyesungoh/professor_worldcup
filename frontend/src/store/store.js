@@ -4,14 +4,14 @@ const OPERATION = {
     SELECT: "SELECT",
 };
 
-const selectMajor = (major) => {
-    return { type: OPERATION.SELECT, major };
+const selectMajor = (major, professors) => {
+    return { type: OPERATION.SELECT, major, professors };
 };
 
 const reducer = (state = "", action) => {
     switch (action.type) {
         case OPERATION.SELECT:
-            return action.major;
+            return [action.major, action.professors];
         default:
             return state;
     }

@@ -21,13 +21,20 @@ function HomePresenter({ history, selectMajor }) {
         "미디어컨텐츠융합자율학부",
     ];
 
+    const professors = {
+        IT융합자율학부: ["아이티1", "아이티2", "아이티3", "아이티4"],
+        인문융합자율학부: ["인문1", "인문2", "인문3", "인문4"],
+        사회융합자율학부: ["사회1", "사회2", "사회3", "사회4"],
+        미디어컨텐츠융합자율학부: ["미컨1", "미컨2", "미컨3", "미컨4"],
+    };
+
     const onChange = (e) => {
         setMyMajor(e.target.value);
     };
 
     const onSubmit = () => {
         if (myMajor !== "") {
-            selectMajor(myMajor);
+            selectMajor(myMajor, professors[myMajor]);
             history.push("/select");
         } else {
             alert("선택해주세용");
@@ -59,7 +66,12 @@ function HomePresenter({ history, selectMajor }) {
                     </Select>
                 </FormControl>
 
-                <Button className="home__btn" onClick={onSubmit} variant="contained" color="primary">
+                <Button
+                    className="home__btn"
+                    onClick={onSubmit}
+                    variant="contained"
+                    color="primary"
+                >
                     우리과 최고의 교수님은?
                 </Button>
             </div>
@@ -73,7 +85,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        selectMajor: (text) => dispatch(actionCreators.selectMajor(text)),
+        selectMajor: (text, professors) =>
+            dispatch(actionCreators.selectMajor(text, professors)),
     };
 };
 

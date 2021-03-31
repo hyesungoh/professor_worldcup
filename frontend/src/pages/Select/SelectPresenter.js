@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
-function SelectPresenter({ history, major }) {
+function SelectPresenter({ history, major, professors }) {
     const leftItem = useRef(null);
     const rightItem = useRef(null);
 
+    console.log(major, professors);
+
     useEffect(() => {
-        if (major === "") {
+        if (major === undefined || "") {
             history.push("/");
         }
 
@@ -17,7 +19,6 @@ function SelectPresenter({ history, major }) {
     }, []);
 
     const onSelect = (e) => {
-        console.log(e.target === leftItem.current);
         if (e.target === leftItem.current) {
             leftItem.current.classList.add("select--leftSelected");
             rightItem.current.classList.add("select--rightNotSelected");
@@ -25,6 +26,9 @@ function SelectPresenter({ history, major }) {
             leftItem.current.classList.add("select--leftNotSelected");
             rightItem.current.classList.add("select--rightSelected");
         }
+
+        // 선택후 n초 후에 클래스 부여해서 없앤 다음에 다음 라운드로
+        // 라운드는 어떻게 하지 ?
     };
 
     return (
@@ -53,7 +57,7 @@ function SelectPresenter({ history, major }) {
 }
 
 function mapStateToProps(state) {
-    return { major: state };
+    return { major: state[0], professors: state[1] };
 }
 
 export default connect(mapStateToProps)(SelectPresenter);
