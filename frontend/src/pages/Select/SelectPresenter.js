@@ -56,8 +56,9 @@ function SelectPresenter({ history, major, professors }) {
     );
 }
 
-function mapStateToProps(state) {
-    return { major: state[0], professors: state[1] };
-}
+// function mapStateToProps(state) {
+//     return { major: state[0], professors: state[1] };
+// }
 
-export default connect(mapStateToProps)(SelectPresenter);
+// export default connect(mapStateToProps)(SelectPresenter);
+export default SelectPresenter;
