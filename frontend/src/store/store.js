@@ -11,7 +11,8 @@ const selectMajor = (major, professors) => {
 const reducer = (state = "", action) => {
     switch (action.type) {
         case OPERATION.SELECT:
-            return [action.major, action.professors];
+            // return [action.major, action.professors];
+            return { major: action.major, professors: action.professors };
         default:
             return state;
     }

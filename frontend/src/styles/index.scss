@@ -48,6 +48,7 @@ main {
     width: 100vw;
     height: 100vh;
     display: flex;
+    overflow: hidden;
 }
 
 .left {
@@ -144,6 +145,10 @@ main {
 
     &--rightNotSelected {
         transform: translateX(50vw);
+    }
+
+    &--nextStage {
+        transform: translateY(-50vw) !important;
     }
 }
 

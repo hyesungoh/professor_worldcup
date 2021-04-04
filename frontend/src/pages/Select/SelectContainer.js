@@ -1,31 +1,39 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import SelectPresenter from "pages/Select/SelectPresenter";
 
-class SelectContainer extends Component {
-    constructor(props) {
-        super(props);
-        console.log(props);
-    }
+const returnRandomProfArr = (profs) => {
+    return profs.sort((a, b) => 0.5 - Math.random());
+};
 
-    // componentDidMount() {
-    //     if()
-    // }
+function SelectContainer({ history, major, professors }) {
+    const [round, setRound] = useState(16);
+    const [nextProfs, setNextProfs] = useState([]);
+    const [nowProfs, setNowProfs] = useState();
 
-    render() {
-        const { history, major, professors } = this.props;
-        return (
-            <SelectPresenter
-                history={history}
-                major={major}
-                professors={professors}
-            />
-        );
-    }
+    useEffect(() => {
+        if (major === undefined || major === "") {
+            history.push("/");
+        } else {
+            setNowProfs(returnRandomProfArr(professors));
+            
+        }
+    }, []);
+
+    return (
+        <SelectPresenter
+            history={history}
+            major={major}
+            professors={professors}
+            setNextProfs={setNextProfs}
+        />
+    );
 }
+
 function mapStateToProps(state) {
-    return { major: state[0], professors: state[1] };
+    const { major, professors } = state;
+    return { major, professors };
 }
 
 export default connect(mapStateToProps)(SelectContainer);
