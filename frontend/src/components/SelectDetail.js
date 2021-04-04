@@ -1,14 +1,19 @@
 import React, { useEffect, useRef } from "react";
 
-const SelectDetail = ({ major }) => {
+const SelectDetail = ({
+    index,
+    round,
+    major,
+    nowRound,
+    setNowRound,
+    setNextProfs,
+}) => {
     const leftItem = useRef(null);
     const rightItem = useRef(null);
 
     useEffect(() => {
-        setTimeout(() => {
-            leftItem.current.classList.add("show");
-            rightItem.current.classList.add("show");
-        }, 500);
+        leftItem.classList = "select__item";
+        rightItem.classList = "select__item";
     }, []);
 
     const onSelect = (e) => {
@@ -23,12 +28,22 @@ const SelectDetail = ({ major }) => {
         setTimeout(() => {
             e.target.classList.add("select--nextStage");
         }, 1000);
+
+        setTimeout(() => {
+            setNowRound((current) => current + 1);
+            setNextProfs((current) => [...current, e.target.id]);
+        }, 1500);
+    };
+
+    const isCurrentRound = () => {
+        const className = nowRound === index ? "show" : "";
+        return className;
     };
 
     return (
-        <main className="select">
+        <main className={`select ${isCurrentRound()}`}>
             <div className="select__info">
-                <h1 className="select__info__title">16강</h1>
+                <h1 className="select__info__title">{round}강</h1>
                 <p className="select__info__major">{major}</p>
             </div>
 

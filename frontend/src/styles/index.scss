@@ -95,6 +95,12 @@ main {
 }
 
 .select {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+
+    transition: all 1s;
+
     &__info {
         position: absolute;
         width: 100vw;
@@ -113,8 +119,8 @@ main {
         border-radius: 18%;
         cursor: pointer;
 
-        opacity: 0;
-        visibility: hidden;
+        opacity: inherit;
+        visibility: inherit;
         transition: transform 1s 0s ease-in-out, opacity 1s 0.2s linear, all 1s;
 
         &:hover {
@@ -154,5 +160,6 @@ main {
 
 .show {
     visibility: visible;
+    // display: flex;
     opacity: 1;
 }
