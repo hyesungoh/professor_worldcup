@@ -14,8 +14,11 @@ const SelectDetail = ({
     useEffect(() => {
         // 16 > 8강이 됐을 때 선택된 것에 부여될 클래스 리스트가 부여돼 있음
         // ref를 이용해여 classList를 초기화 할려했으나 property 에러
-        leftItem.classList = "select__item";
-        rightItem.classList = "select__item";
+
+        // if (leftItem && rightItem) {
+        //     leftItem.classList = "select__item";
+        //     rightItem.classList = "select__item";
+        // }
     }, []);
 
     const onSelect = (e) => {

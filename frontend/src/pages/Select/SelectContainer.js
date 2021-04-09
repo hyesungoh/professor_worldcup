@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { connect } from "react-redux";
 
 import SelectPresenter from "pages/Select/SelectPresenter";
@@ -15,6 +16,8 @@ function SelectContainer({ history, major, professors }) {
     const [nextProfs, setNextProfs] = useState([]);
     const [nowProfs, setNowProfs] = useState(professors);
 
+    const [data, setData] = useState();
+
     useEffect(() => {
         if (major === undefined || major === "") {
             history.push("/");
@@ -22,6 +25,10 @@ function SelectContainer({ history, major, professors }) {
             // 처음 진입 시 교수를 랜덤으로 섞어서 저장
             setNowProfs(returnRandomProfArr(professors));
         }
+
+        axios
+            .get("http://localhost:8080/user/1")
+            .then((res) => console.log(res));
     }, []);
 
     useEffect(() => {

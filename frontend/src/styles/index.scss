@@ -98,7 +98,6 @@ main {
     position: absolute;
     visibility: hidden;
     opacity: 0;
-
     transition: all 1s;
 
     &__info {
@@ -112,7 +111,7 @@ main {
         align-items: center;
     }
 
-    &__item {
+    &__item {   
         width: 25vw;
         height: 25vw;
         background-color: #74b9ff;
