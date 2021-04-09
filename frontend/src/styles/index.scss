@@ -51,6 +51,26 @@ main {
     overflow: hidden;
 }
 
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 999;
+
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s;
+
+    &--end {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
 .left {
     width: 50vw;
     height: 100vh;
@@ -111,7 +131,7 @@ main {
         align-items: center;
     }
 
-    &__item {   
+    &__item {
         width: 25vw;
         height: 25vw;
         background-color: #74b9ff;
