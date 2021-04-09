@@ -7,12 +7,14 @@ import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import { actionCreators } from "store/store";
 import background from "static/images/skhu_background.jpeg";
 
-function HomePresenter({ history, selectMajor }) {
+function HomePresenter({ history, selectMajor, isLoading, professors }) {
     const [myMajor, setMyMajor] = useState("");
 
     useEffect(() => {
         selectMajor("");
     }, []);
+
+    console.log(isLoading, professors);
 
     const majors = [
         "IT융합자율학부",
@@ -21,12 +23,12 @@ function HomePresenter({ history, selectMajor }) {
         "미디어콘텐츠융합자율학부",
     ];
 
-    const professors = {
-        IT융합자율학부: ["아이티1", "아이티2", "아이티3", "아이티4"],
-        인문융합자율학부: ["인문1", "인문2", "인문3", "인문4"],
-        사회융합자율학부: ["사회1", "사회2", "사회3", "사회4"],
-        미디어콘텐츠융합자율학부: ["미컨1", "미컨2", "미컨3", "미컨4"],
-    };
+    // const professors = {
+    //     IT융합자율학부: ["아이티1", "아이티2", "아이티3", "아이티4"],
+    //     인문융합자율학부: ["인문1", "인문2", "인문3", "인문4"],
+    //     사회융합자율학부: ["사회1", "사회2", "사회3", "사회4"],
+    //     미디어콘텐츠융합자율학부: ["미컨1", "미컨2", "미컨3", "미컨4"],
+    // };
 
     const onChange = (e) => {
         setMyMajor(e.target.value);

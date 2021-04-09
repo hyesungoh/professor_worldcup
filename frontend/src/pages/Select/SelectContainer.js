@@ -25,10 +25,6 @@ function SelectContainer({ history, major, professors }) {
             // 처음 진입 시 교수를 랜덤으로 섞어서 저장
             setNowProfs(returnRandomProfArr(professors));
         }
-
-        axios
-            .get("http://localhost:8080/user/1")
-            .then((res) => console.log(res));
     }, []);
 
     useEffect(() => {
