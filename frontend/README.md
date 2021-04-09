@@ -1,6 +1,6 @@
 # Frontend
 
-## package
+## Package
 
 ```termianal
 npm i react-router-dom
@@ -22,3 +22,5 @@ npm i react-redux
 ```terminal
 npm i @material-ui/core
 ```
+
+## Develop log
