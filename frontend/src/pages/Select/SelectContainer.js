@@ -6,16 +6,18 @@ import SelectPresenter from "pages/Select/SelectPresenter";
 import SelectDetail from "components/SelectDetail";
 
 // 현재 교수 배열을 랜덤으로 섞어서 반환
-const returnRandomProfArr = (profs) => {
-    return profs.sort((a, b) => 0.5 - Math.random());
+const returnRandomProfArr = (profs, round) => {
+    const randomProfs = profs
+        .sort((a, b) => 0.5 - Math.random())
+        .slice(0, round);
+    return randomProfs;
 };
 
 function SelectContainer({ history, major, professors }) {
-    const [round, setRound] = useState(16);
+    const [round, setRound] = useState(4);
     const [nowRound, setNowRound] = useState(0);
     const [nextProfs, setNextProfs] = useState([]);
     const [nowProfs, setNowProfs] = useState(professors);
-
     const [data, setData] = useState();
 
     useEffect(() => {
@@ -23,7 +25,7 @@ function SelectContainer({ history, major, professors }) {
             history.push("/");
         } else {
             // 처음 진입 시 교수를 랜덤으로 섞어서 저장
-            setNowProfs(returnRandomProfArr(professors));
+            setNowProfs(returnRandomProfArr(professors, round));
         }
     }, []);
 
@@ -41,21 +43,26 @@ function SelectContainer({ history, major, professors }) {
         }
     }, [nowRound]);
 
-    return (
-        <>
-            {[...Array(parseInt(round / 2)).keys()].map((index) => (
-                <SelectDetail
-                    key={index}
-                    index={index}
-                    round={round}
-                    major={major}
-                    nowRound={nowRound}
-                    setNowRound={setNowRound}
-                    setNextProfs={setNextProfs}
-                />
-            ))}
-        </>
-    );
+    console.log(nowProfs, round);
+    if (nowProfs && round === nowProfs.length) {
+        return (
+            <>
+                {[...Array(parseInt(round / 2)).keys()].map((index) => (
+                    <SelectDetail
+                        key={index}
+                        index={index}
+                        round={round}
+                        major={major}
+                        nowProfs={nowProfs}
+                        nowRound={nowRound}
+                        setNowRound={setNowRound}
+                        setNextProfs={setNextProfs}
+                    />
+                ))}
+            </>
+        );
+    }
+    return <div>LOADING</div>;
 }
 
 function mapStateToProps(state) {
