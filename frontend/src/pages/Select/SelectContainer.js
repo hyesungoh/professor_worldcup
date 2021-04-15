@@ -14,11 +14,10 @@ const returnRandomProfArr = (profs, round) => {
 };
 
 function SelectContainer({ history, major, professors }) {
-    const [round, setRound] = useState(4);
+    const [round, setRound] = useState(16);
     const [nowRound, setNowRound] = useState(0);
     const [nextProfs, setNextProfs] = useState([]);
     const [nowProfs, setNowProfs] = useState(professors);
-    const [data, setData] = useState();
 
     useEffect(() => {
         if (major === undefined || major === "") {
@@ -41,20 +40,22 @@ function SelectContainer({ history, major, professors }) {
             // 다음 진출 교수 배열을 다시 비어있도록
             setNextProfs([]);
         }
+        console.log(nowProfs, round);
     }, [nowRound]);
 
-    console.log(nowProfs, round);
     if (nowProfs && round === nowProfs.length) {
+        const halfNumber = parseInt(round / 2);
         return (
             <>
-                {[...Array(parseInt(round / 2)).keys()].map((index) => (
+                {[...Array(halfNumber).keys()].map((index) => (
                     <SelectDetail
-                        key={index}
+                        key={`${nowRound}-${index}`}
                         index={index}
                         round={round}
                         major={major}
-                        nowProfs={nowProfs}
-                        nowRound={nowRound}
+                        leftProf={nowProfs[index]}
+                        rightProf={nowProfs[index + halfNumber]}
+                        isCurrentRound={index === nowRound}
                         setNowRound={setNowRound}
                         setNextProfs={setNextProfs}
                     />

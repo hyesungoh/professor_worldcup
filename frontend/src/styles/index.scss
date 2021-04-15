@@ -149,7 +149,8 @@ main {
 
         opacity: inherit;
         visibility: inherit;
-        transition: transform 1s 0s ease-in-out, opacity 1s 0.2s linear, all 1s;
+        transition: transform 1s 0s ease-in-out, opacity 1s 0.2s linear,
+            all 0.8s;
 
         &:hover {
             transform: scale(1.2);
@@ -182,12 +183,11 @@ main {
     }
 
     &--nextStage {
-        transform: translateY(-50vw) !important;
+        transform: translateY(-80vw) !important;
     }
 }
 
 .show {
     visibility: visible;
-    // display: flex;
     opacity: 1;
 }
