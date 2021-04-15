@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 
 import { actionCreators } from "store/store";
+import Loading from "components/Loading";
 import background from "static/images/skhu_background.jpeg";
 
 function HomePresenter({ history, selectMajor, isLoading, professors }) {
@@ -35,12 +36,8 @@ function HomePresenter({ history, selectMajor, isLoading, professors }) {
         }
     };
 
-    const WhenLoading = () => (
-        <div className={`loading ${isLoading ? "" : LOADING_END_CN}`}></div>
-    );
-
     if (isLoading) {
-        return <WhenLoading />;
+        return <Loading />;
     } else {
         return (
             <main>
