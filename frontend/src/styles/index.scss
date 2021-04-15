@@ -152,6 +152,23 @@ main {
         transition: transform 1s 0s ease-in-out, opacity 1s 0.2s linear,
             all 0.8s;
 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &__name {
+            font-weight: 100;
+        }
+        &__name > span {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        &__major {
+            font-weight: 100;
+        }
+
         &:hover {
             transform: scale(1.2);
             background-color: #0984e3;

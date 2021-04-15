@@ -54,7 +54,12 @@ const SelectDetail = ({
                     onClick={onSelect}
                     className="select__item"
                 >
-                    {leftProf.professorName}
+                    <div className="select__item__name">
+                        <span>{leftProf.professorName}</span> 교수님
+                    </div>
+                    <div className="select__item__major">
+                        <span>{leftProf.major}</span>
+                    </div>
                 </div>
             </div>
             <div className="right">
@@ -64,7 +69,12 @@ const SelectDetail = ({
                     onClick={onSelect}
                     className="select__item"
                 >
-                    {rightProf.professorName}
+                    <div className="select__item__name">
+                        <span>{rightProf.professorName}</span> 교수님
+                    </div>
+                    <div className="select__item__major">
+                        <span>{rightProf.major}</span>
+                    </div>
                 </div>
             </div>
         </main>
