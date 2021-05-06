@@ -15,7 +15,7 @@ const SelectDetail = ({
 
     const onSelect = (e) => {
         let targetProf;
-        if (e.target === leftItem.current) {
+        if (e.target.id === leftItem.current.id) {
             leftItem.current.classList.add("select--leftSelected");
             rightItem.current.classList.add("select--rightNotSelected");
             targetProf = leftProf;

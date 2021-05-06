@@ -14,15 +14,21 @@ import net.myh.model.major;
 
 @Mapper
 public interface ProfessorMapper {
-	@Select("select professorName, major from professor Where departmentId = #{departmentId} order by major ASC")
+	@Select("select * from professor")
+	List<Professor> getAll();
+
+	@Select("select * from professor WHERE departmentId = #{departmentId} order by major ASC")
 	List<major> getProfessor(@Param("departmentId") int departmentId);
 
 	@Insert("INSERT INTO Professor VALUES (#{id}, #{professorName}, #{departmentId}, #{major}, #{firstCount})") // 삽입
 	int insertUserProfile(@Param("id") int id, @Param("professorName") String professorName,
 			@Param("departmentId") int departmentId, @Param("major") String major, @Param("firstCount") int firstCount);
 
-	@Update("UPDATE Professor SET professorName=#{professorName} WHERE id=#{id}") // 수정
+	@Update("UPDATE Professor SET professorName=#{professorName} WHERE professorName=#{id}") // 수정
 	int postUserProfile(@Param("id") int id, @Param("professorName") String professorName);
+
+	@Update("update professor set firstCount=firstCount+1 where professorName=#{professorName}") // 수정
+	int postWinner(@Param("professorName") String professorName);
 
 	@Delete("DELETE from Professor WHERE id=#{id}") // 삭제
 	int deleteUserProfile(@Param("id") int id);
