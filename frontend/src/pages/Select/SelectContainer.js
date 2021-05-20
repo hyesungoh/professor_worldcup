@@ -14,7 +14,7 @@ const returnRandomProfArr = (profs, round) => {
 };
 
 function SelectContainer({ history, major, professors }) {
-    const [round, setRound] = useState(16);
+    const [round, setRound] = useState(2);
     const [nowRound, setNowRound] = useState(0);
     const [nextProfs, setNextProfs] = useState([]);
     const [nowProfs, setNowProfs] = useState(professors);
@@ -28,6 +28,25 @@ function SelectContainer({ history, major, professors }) {
         }
     }, []);
 
+    const pushWinnerData = async () => {
+        const data = await axios({
+            url: `http://localhost:8080/user/winner`,
+            method: "post",
+            data: {
+                professor: {
+                    professorName: "이승진",
+                    departmentId: 1,
+                },
+            },
+        });
+        console.log(data);
+        // const data = axios.post("https://localhost:8080/user/winner", {
+        //     professorsName: nowProfs[0].professorsName,
+        //     departmentId: 1,
+        // });
+        // console.log(data);
+    };
+
     useEffect(() => {
         // 라운드가 전부 진행됐을 때
         if (nowRound === parseInt(round / 2)) {
@@ -40,6 +59,11 @@ function SelectContainer({ history, major, professors }) {
             // 다음 진출 교수 배열을 다시 비어있도록
             setNextProfs([]);
         }
+
+        if (round === 1) {
+            pushWinnerData();
+        }
+
         console.log(nowProfs, round);
     }, [nowRound]);
 
@@ -63,7 +87,7 @@ function SelectContainer({ history, major, professors }) {
             </>
         );
     }
-    return <div>LOADING</div>;
+    return <div></div>;
 }
 
 function mapStateToProps(state) {
