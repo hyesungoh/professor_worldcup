@@ -37,11 +37,10 @@ public class ProfessorController {
         return mapper.getProfessor(departmentId);
     }
 
-//    @RequestMapping(value = "/user/ranking", method = RequestMethod.GET) //학부별 랭킹 출력
-//    @ResponseBody
-//    public List<Professor> ranking() throws Exception {
-//        return mapper.getRanking();
-//    }
+    @GetMapping("user/ranking/{id}") //학부별 랭킹 순위 출력
+    public List<Professor> getRanking(@PathVariable("id") int departmentId){
+        return mapper.getRanking(departmentId);
+    }
 
     @GetMapping("/result")
     public List<Professor> getAll() {
