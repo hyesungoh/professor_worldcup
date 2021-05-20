@@ -28,21 +28,36 @@ function SelectContainer({ history, major, professors }) {
         }
     }, []);
 
+    const switchingDepartment = (departmentName) => {
+        switch (departmentName) {
+            case "it융합자율학부":
+                return 1;
+            case "인문융합자율학부":
+                return 2;
+            case "사회융합자율학부":
+                return 3;
+            case "미디어콘텐츠융합자율학부":
+                return 4;
+            default:
+                return 0;
+        }
+    };
+
     const pushWinnerData = async () => {
-        const data = await axios({
-            url: `http://localhost:8080/user/winner`,
-            method: "post",
-            data: {
-                professor: {
-                    professorName: "이승진",
-                    departmentId: 1,
-                },
-            },
-        });
-        console.log(data);
-        // const data = axios.post("https://localhost:8080/user/winner", {
-        //     professorsName: nowProfs[0].professorsName,
-        //     departmentId: 1,
+        console.log(nowProfs[0].professorName);
+        console.log(nowProfs[0].major);
+        // console.log(switchingDepartment(nowProfs[0].major));
+
+        
+        // const data = await axios({
+        //     url: `http://localhost:8080/user/winner`,
+        //     method: "post",
+        //     data: {
+        //         professor: {
+        //             professorName: "이승진",
+        //             departmentId: 1,
+        //         },
+        //     },
         // });
         // console.log(data);
     };
@@ -63,8 +78,6 @@ function SelectContainer({ history, major, professors }) {
         if (round === 1) {
             pushWinnerData();
         }
-
-        console.log(nowProfs, round);
     }, [nowRound]);
 
     if (nowProfs && round === nowProfs.length) {

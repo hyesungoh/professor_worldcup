@@ -23,6 +23,7 @@ function HomeContainer({ history }) {
                 ]).then((values) => {
                     const valuesData = {};
                     values.map((value, index) => {
+                        console.log(value);
                         switch (index) {
                             case 0:
                                 valuesData["IT융합자율학부"] = value.data;
