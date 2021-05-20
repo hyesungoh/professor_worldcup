@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap");
 
+$blue1: #74b9ff;
+$blue2: #0984e3;
+
 * {
     margin: 0;
     padding: 0;
@@ -210,4 +213,57 @@ main {
 .show {
     visibility: visible;
     opacity: 1;
+}
+
+// Result
+
+.resultMain {
+    flex-direction: column;
+    background-color: $blue1;
+    padding: 16px 12%;
+}
+
+.resultNav {
+    position: relative;
+
+    width: 100%;
+    height: 160px;
+    
+    display: flex;
+    justify-content: center;
+
+    &__backBtn {
+        all: unset;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+
+        width: 100px;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 300px;
+        height: auto;
+
+        & > span {
+            font-size: 12px;
+            opacity: 0.6;
+        }
+    }
+}
+
+.resultRanker {
+    width: 100%;
+    height: 350px;
+}
+
+.resultRanking {
+    width: 100%;
+    height: calc(100% - 160px - 350px);
 }

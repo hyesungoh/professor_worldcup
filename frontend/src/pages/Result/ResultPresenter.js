@@ -1,7 +1,19 @@
 import React from "react";
 
 function ResultPresenter() {
-    return <main>Im result</main>;
+    return (
+        <main className="resultMain">
+            <nav className="resultNav">
+                <button className="resultNav__backBtn">{"<"} 다시하기</button>
+                <div className="resultNav__header">
+                    <h1>IT융합자율학부 랭킹</h1>
+                    <span>2021년 5월 20일</span>
+                </div>
+            </nav>
+            <section className="resultRanker"></section>
+            <section className="resultRanking"></section>
+        </main>
+    );
 }
 
 export default ResultPresenter;
