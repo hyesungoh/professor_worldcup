@@ -43,12 +43,16 @@ function SelectContainer({ history, major, professors }) {
         }
     };
 
+    const redirectToResult = () => {
+        history.push("/result");
+    };
+
     const pushWinnerData = async () => {
         console.log(nowProfs[0].professorName);
         console.log(nowProfs[0].major);
+        redirectToResult();
         // console.log(switchingDepartment(nowProfs[0].major));
 
-        
         // const data = await axios({
         //     url: `http://localhost:8080/user/winner`,
         //     method: "post",
