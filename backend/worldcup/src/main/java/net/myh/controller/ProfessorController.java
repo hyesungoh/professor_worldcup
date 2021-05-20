@@ -13,14 +13,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import jdk.internal.org.jline.utils.Log;
 import net.myh.mapper.ProfessorMapper;
 import net.myh.model.Professor;
 import net.myh.model.major;
+
 
 @CrossOrigin(origins = "*")
 @RestController // RestController 하고 Ctrl+Space 한 뒤 Enter
@@ -43,11 +47,11 @@ public class ProfessorController {
 		return mapper.getAll();
 	}
 
-	@PostMapping("/user/winner/{departmentId}/{professorName}") // 우승자를 출력하는 주소
-	public String getWinner(@PathVariable("departmentId") int departmentId,
-			@PathVariable("professorName") String professorName) { // 주소에 들어오는 변수명=PathVariable 안에 들어오는 변수명
-		mapper.postWinner(professorName);
-		return "redirect:http://localhost:8080/result"; // 이 부분은 프론트에서 확인해주어야 함
+	@RequestMapping(value = "/user/winner", method = RequestMethod.POST)
+	@ResponseBody
+	public String getWinner(@RequestBody Map<String, Professor> winner){ // 주소에 들어오는 변수명=PathVariable 안에 들어오는 변수명
+		mapper.postWinner(winner.get("professor").getProfessorName());
+		return winner.get("professor").getProfessorName(); // 이 부분은 프론트에서 확인해주어야 함
 	}
 
 	@PutMapping("user/{id}") // @Path는 주소에 넘길 값을 의미, 값을 넣을때는 put을 사용
