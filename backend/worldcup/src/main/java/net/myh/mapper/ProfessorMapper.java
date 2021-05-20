@@ -10,7 +10,6 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import net.myh.model.Professor;
-import net.myh.model.major;
 
 @Mapper
 public interface ProfessorMapper {
@@ -18,7 +17,6 @@ public interface ProfessorMapper {
     List<Professor> getAll();
 
     @Select("select d.id,p.professorName,p.major from department d join professor p on d.id=p.departmentId where d.id=#{departmentId}")
-    List<major> getProfessor(@Param("departmentId") int departmentId);
 
     @Select("select * from professor where departmentId=#{departmentId} order by firstCount desc;")
     List<Professor> getRanking(@Param("departmentId") int departmentId); //학부별로 순위 출력

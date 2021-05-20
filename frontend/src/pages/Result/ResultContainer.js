@@ -4,4 +4,4 @@ const ResultContainer = () => {
     return <ResultPresenter />;
 };
 
-export default ResultContainer
+export default ResultContainerexport default ResultContainer;
