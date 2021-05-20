@@ -1,7 +1,11 @@
 import ResultPresenter from "pages/Result/ResultPresenter";
 
-const ResultContainer = () => {
-    return <ResultPresenter />;
+const ResultContainer = ({ history }) => {
+    const onClickReturn = () => {
+        history.push("/");
+    };
+
+    return <ResultPresenter onClickReturn={onClickReturn}/>;
 };
 
-export default ResultContainerexport default ResultContainer;
+export default ResultContainer;

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import net.myh.mapper.ProfessorMapper;
 import net.myh.model.Professor;
+import net.myh.model.Department;
 
 
 @CrossOrigin(origins = "*")
@@ -32,6 +33,7 @@ public class ProfessorController {
     }
 
     @GetMapping("/user/{id}")
+    public List<Department> getUserProfileAll(@PathVariable("id") int departmentId) {
         return mapper.getProfessor(departmentId);
     }
 

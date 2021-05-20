@@ -49,7 +49,7 @@ function SelectContainer({ history, major, professors }) {
 
     const pushWinnerData = async () => {
         console.log(nowProfs[0].professorName);
-        console.log(nowProfs[0].major);
+        console.log(nowProfs[0].departmentId);
         redirectToResult();
         // console.log(switchingDepartment(nowProfs[0].major));
 
