@@ -27,8 +27,8 @@ function ResultPresenter({ onClickReturn, ranking }) {
                 </div>
             </section>
             <section className="resultRanking">
-                {ranking.slice(3).map((rank) => (
-                    <div className="resultRanking__card">
+                {ranking.slice(3).map((rank, index) => (
+                    <div key={index} className="resultRanking__card">
                         {rank.professorName}
                         {rank.firstCount}
                     </div>
