@@ -1,6 +1,6 @@
 import React from "react";
 
-function ResultPresenter({ onClickReturn }) {
+function ResultPresenter({ onClickReturn, ranking }) {
     return (
         <main className="resultMain">
             <nav className="resultNav">
@@ -13,31 +13,26 @@ function ResultPresenter({ onClickReturn }) {
                 </div>
             </nav>
             <section className="resultRanker">
-                <div className="resultRanker__card"></div>
-                <div className="resultRanker__card"></div>
-                <div className="resultRanker__card"></div>
+                <div className="resultRanker__card">
+                    {ranking[0].professorName}
+                    {ranking[0].firstCount}
+                </div>
+                <div className="resultRanker__card">
+                    {ranking[1].professorName}
+                    {ranking[1].firstCount}
+                </div>
+                <div className="resultRanker__card">
+                    {ranking[2].professorName}
+                    {ranking[2].firstCount}
+                </div>
             </section>
             <section className="resultRanking">
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
-                <div className="resultRanking__card"></div>
+                {ranking.slice(3).map((rank) => (
+                    <div className="resultRanking__card">
+                        {rank.professorName}
+                        {rank.firstCount}
+                    </div>
+                ))}
             </section>
         </main>
     );

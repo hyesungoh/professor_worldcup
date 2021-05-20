@@ -43,27 +43,28 @@ function SelectContainer({ history, major, professors }) {
         }
     };
 
-    const redirectToResult = () => {
-        history.push("/result");
+    const redirectToResultWithResponse = (response) => {
+        history.push({ pathname: "/result", state: { data: response } });
     };
 
     const pushWinnerData = async () => {
-        console.log(nowProfs[0].professorName);
-        console.log(nowProfs[0].departmentId);
-        redirectToResult();
-        // console.log(switchingDepartment(nowProfs[0].major));
+        const departmentId = parseInt(nowProfs[0].departmentId);
 
-        // const data = await axios({
-        //     url: `http://localhost:8080/user/winner`,
-        //     method: "post",
-        //     data: {
-        //         professor: {
-        //             professorName: "이승진",
-        //             departmentId: 1,
-        //         },
-        //     },
-        // });
-        // console.log(data);
+        await axios({
+            url: `http://localhost:8080/user/winner`,
+            method: "post",
+            data: {
+                professor: {
+                    professorName: nowProfs[0].professorName,
+                    departmentId: departmentId,
+                },
+            },
+        }).then(async (_) => {
+            await axios({
+                method: "get",
+                url: `http://localhost:8080/user/ranking/${departmentId}`,
+            }).then((res) => redirectToResultWithResponse(res.data));
+        });
     };
 
     useEffect(() => {
