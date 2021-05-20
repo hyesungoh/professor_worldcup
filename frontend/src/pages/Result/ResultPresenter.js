@@ -10,7 +10,11 @@ function ResultPresenter() {
                     <span>2021년 5월 20일</span>
                 </div>
             </nav>
-            <section className="resultRanker"></section>
+            <section className="resultRanker">
+                <div className="resultRanker__card"></div>
+                <div className="resultRanker__card"></div>
+                <div className="resultRanker__card"></div>
+            </section>
             <section className="resultRanking"></section>
         </main>
     );
